@@ -1,0 +1,26 @@
+{
+  "name": "tip-calculator-app-main",
+  "description": "![Design preview for the Tip calculator app coding challenge](./design/desktop-preview.jpg)",
+  "version": "1.0.0",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build --public-url ./ --dist-dir public"
+  },
+  "author": "slightlyfunctional",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@fontsource/space-mono": "^4.5.12",
+    "modern-css-reset": "^1.4.0",
+    "parcel": "^2.8.3"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.9"
+  },
+  "resolutions": {
+    "styled-components": "^5"
+  }
+}
