@@ -12,6 +12,8 @@
   "license": "GPL-3.0-or-later",
   "devDependencies": {
     "@fontsource/space-mono": "^4.5.12",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react": "^7.32.2",
     "modern-css-reset": "^1.4.0",
     "parcel": "^2.8.3"
   },
