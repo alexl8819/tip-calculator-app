@@ -10,7 +10,7 @@ const Container = styled.div`
   align-items: center;
   min-height: 100vh;
   min-width: 320px;
-  background-color: hsl(189, 41%, 97%);
+  background-color: hsl(185, 41%, 84%);
 `;
 
 const AppHeader = styled.header`

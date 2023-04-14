@@ -22,13 +22,14 @@ const InputLabel = styled.label`
 `;
 
 const FieldIcon = styled.img`
-  width: 1.25rem;
+  width: 0.875rem;
 `;
 
 const InputField = styled.input`
   font-size: 24px;
   text-align: right;
   border: none;
+  border-radius: 8px;
   background-color: hsl(189, 41%, 97%);
   width: 100%;
   appearance: textfield;
