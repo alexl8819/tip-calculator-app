@@ -44,15 +44,23 @@ const InputField = styled.input`
   }
 `;
 
-export default function TwoColumnNumberInput ({ name, label, icon, alt, value, placeholder, onInput }) {
+const HalfWidthInputField = styled(InputField)`
+  width: 50%;
+`;
+
+export function CustomNumberInput ({ name, value, placeholder, min, onInput, required }) {
+  return (<HalfWidthInputField type="number" name={name} min={min} value={value} placeholder={placeholder} onInput={onInput} required={required} />);
+}
+
+export function TwoColumnNumberInput ({ name, label, icon, alt, value, placeholder, min, onInput, required }) {
   const iconImg = icon === 'person' ? new URL('../images/icon-person.svg', import.meta.url) : new URL('../images/icon-dollar.svg', import.meta.url);
   return (
     <InputContainer>
       <InputLabel htmlFor={name}>{ label }</InputLabel>
       <InnerContainer>
         <FieldIcon src={iconImg} alt={alt} />
-        <InputField type="number" name={name} value={value} placeholder={placeholder} onInput={onInput} />
+        <InputField type="number" name={name} min={min} value={value} placeholder={placeholder} onInput={onInput} required={required} />
       </InnerContainer>
     </InputContainer>
   )
-};
+}
