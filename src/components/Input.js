@@ -44,12 +44,12 @@ const InputField = styled.input`
   }
 `;
 
-const HalfWidthInputField = styled(InputField)`
-  width: 50%;
+const FullWidthInputField = styled(InputField)`
+  width: 100%;
 `;
 
 export function CustomNumberInput ({ name, value, placeholder, min, onInput, required }) {
-  return (<HalfWidthInputField type="number" name={name} min={min} value={value} placeholder={placeholder} onInput={onInput} required={required} />);
+  return (<FullWidthInputField type="number" name={name} min={min} value={value} placeholder={placeholder} onInput={onInput} required={required} />);
 }
 
 export function TwoColumnNumberInput ({ name, label, icon, alt, value, placeholder, min, onInput, required }) {

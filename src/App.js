@@ -26,14 +26,15 @@ const CalculatorForm = styled.form`
   font-family: 'Space Mono', sans-serif;
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 35px;
+  padding-right: 35px;
   border-radius: 12px;
   background-color: hsl(0, 0%, 100%);
 
   @media screen and (min-width: 1024px) {
     flex-direction: row;
     justify-content: space-between;
+    max-width: 48rem;
   }
 `;
 
@@ -41,7 +42,15 @@ const Col = styled.div`
   width: 100%;
 
   @media screen and (min-width: 1024px) {
-    width: 48%;
+    width: 50%;
+    
+    &:first-child {
+      margin-right: 20px;
+    }
+
+    &:last-child {
+      margin-left: 20px;
+    }
   }
 `;
 
@@ -82,6 +91,10 @@ const PerPersonDescription = styled.p`
 const Result = styled.span`
   color: hsl(172, 67%, 45%);
   font-size: 1.5rem;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const ResetButton = styled.button`
@@ -90,6 +103,10 @@ const ResetButton = styled.button`
   padding: 10px;
   letter-spacing: 0.085em;
   text-transform: uppercase;
+
+  &:disabled {
+    background-color: hsl(186, 14%, 43%);
+  }
 `;
 
 const TipAmount = styled(Result)``;
@@ -120,16 +137,41 @@ export default function App () {
     setNumOfPpl('');
   };
 
+  const menu = {
+    tipAmounts: [
+      {
+        amount: 5,
+        value: 'fivePercent'
+      },
+      {
+        amount: 10,
+        value: 'tenPercent'
+      },
+      {
+        amount: 15,
+        value: 'fifteenPercent'
+      },
+      {
+        amount: 25,
+        value: 'twentyFivePercent'
+      },
+      {
+        amount: 50,
+        value: 'fiftyPercent'
+      }
+    ],
+  };
+
   return (
     <Container>
       <AppHeader>
         <img src={logo} alt="app logo" />
       </AppHeader>
-      <CalculatorForm name="bill-calculator" onSubmit={(e) => e.preventDefault()}>
+      <CalculatorForm name="billCalculator" onSubmit={(e) => e.preventDefault()}>
         <Col>
           <TwoColumnNumberInput icon="dollar" name="bill" label="Bill" alt="money icon" value={billAmount} placeholder="0" min="1" onInput={(e) => setBillAmount(e.target.value)} required />
 
-          <TippingMenu />
+          <TippingMenu menu={menu} allowCustomField={true} setTipPercentage={setTipPercentage} />
           
           <TwoColumnNumberInput icon="person" name="people" label="Number of People" alt="people icon" value={numOfPpl} placeholder="0" min="1" onInput={(e) => setNumOfPpl(e.target.value)} required />
         </Col>
@@ -151,7 +193,7 @@ export default function App () {
                 <TotalAmount>${ calculateTotalOwed }</TotalAmount>
               </PanelContainer>
             </div>
-            <ResetButton type="reset" onClick={(e) => resetAll()}>Reset</ResetButton>
+            <ResetButton type="reset" onClick={(e) => resetAll()} disabled={!billAmount || !tipPercentage || !numOfPpl}>Reset</ResetButton>
           </ResultPanel>
         </Col>
       </CalculatorForm>
