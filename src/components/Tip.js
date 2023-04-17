@@ -16,6 +16,7 @@ const TippingLegend = styled.legend`
 `;
 
 const TippingOptionLabel = styled.label`
+  display: block;
   width: 100%;
   padding: 10px;
   border-radius: 8px;
@@ -52,11 +53,11 @@ export default function TippingMenu ({ menu, allowCustomField, setTipPercentage 
             
       <Grid>
         {
-          menu.tipAmounts.map(({ amount, value }) => (
-            <>
+          menu.tipAmounts.map(({ id, amount, value }, index) => (
+            <div key={id}>
               <TippingOption type="radio" id={value} name="tip" value={amount} onChange={(e) => setTipPercentage(amount)} />
               <TippingOptionLabel htmlFor={value}>{amount}%</TippingOptionLabel>
-            </>
+            </div>
           ))
         }   
         {

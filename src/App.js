@@ -17,7 +17,7 @@ const Container = styled.div`
 `;
 
 const AppHeader = styled.header`
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 `;
 
 const CalculatorForm = styled.form`
@@ -140,22 +140,27 @@ export default function App () {
   const menu = {
     tipAmounts: [
       {
+        id: '63a1876a-f221-4d64-8acd-e13ba1b3db50',
         amount: 5,
         value: 'fivePercent'
       },
       {
+        id: 'c5ba64ab-02c4-4714-a5a6-be41cde55f24',
         amount: 10,
         value: 'tenPercent'
       },
       {
+        id: '7dd1c114-facb-47f6-a151-36959ce73042',
         amount: 15,
         value: 'fifteenPercent'
       },
       {
+        id: 'dc158825-fb80-48f4-8847-ec80b7901876',
         amount: 25,
         value: 'twentyFivePercent'
       },
       {
+        id: '26a35ce8-cb9d-434b-9ef3-ec05ecc53719',
         amount: 50,
         value: 'fiftyPercent'
       }

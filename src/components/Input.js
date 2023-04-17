@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import PersonIcon from '../images/icon-person.svg';
+import DollarIcon from '../images/icon-dollar.svg';
+
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,9 +14,16 @@ const InnerContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   background-color: hsl(189, 41%, 97%);
+  border-radius: 8px;
   height: 50px;
-  padding: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  &:focus-within {
+    border: 2px solid hsl(172, 67%, 45%);
+  }
 `;
 
 const InputLabel = styled.label`
@@ -21,7 +31,11 @@ const InputLabel = styled.label`
   margin-bottom: 5px;
 `;
 
-const FieldIcon = styled.img`
+const StyledPersonIcon = styled(PersonIcon)`
+  width: 0.875rem;
+`;
+
+const StyledDollarIcon = styled(DollarIcon)`
   width: 0.875rem;
 `;
 
@@ -44,23 +58,34 @@ const InputField = styled.input`
   }
 `;
 
-const FullWidthInputField = styled(InputField)`
-  width: 100%;
+const HighlightableInputField = styled(InputField)`
+  &:active, &:focus {
+    border: 2px solid hsl(172, 67%, 45%); 
+  }
 `;
 
 export function CustomNumberInput ({ name, value, placeholder, min, onInput, required }) {
-  return (<FullWidthInputField type="number" name={name} min={min} value={value} placeholder={placeholder} onInput={onInput} required={required} />);
+  return (<HighlightableInputField type="number" name={name} min={min} value={value} placeholder={placeholder} onKeyPress={(e) => handleKeypress(e)} onInput={onInput} required={required} />);
 }
 
 export function TwoColumnNumberInput ({ name, label, icon, alt, value, placeholder, min, onInput, required }) {
-  const iconImg = icon === 'person' ? new URL('../images/icon-person.svg', import.meta.url) : new URL('../images/icon-dollar.svg', import.meta.url);
   return (
     <InputContainer>
       <InputLabel htmlFor={name}>{ label }</InputLabel>
       <InnerContainer>
-        <FieldIcon src={iconImg} alt={alt} />
-        <InputField type="number" name={name} min={min} value={value} placeholder={placeholder} onInput={onInput} required={required} />
+        {
+          icon === 'person' ? <StyledPersonIcon /> : <StyledDollarIcon />
+        }
+        <InputField name={name} min={min} value={value} placeholder={placeholder} onKeyPress={(e) => handleKeypress(e)} onInput={onInput} required={required} />
       </InnerContainer>
     </InputContainer>
   )
+}
+
+function handleKeypress (e) {
+  if (e.keyCode !== 37 && e.keyCode !== 39 && e.keyCode !== 8 && e.keyCode !== ' ' && e.code.includes('Key')) {
+    e.preventDefault();
+  } else if (e.target.value.length >= 8 && e.keyCode !== 37 && e.keyCode !== 39 && e.keyCode !== 8 && e.keyCode !== ' ') {
+    e.preventDefault();
+  }
 }
