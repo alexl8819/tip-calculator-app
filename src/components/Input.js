@@ -24,6 +24,10 @@ const InnerContainer = styled.div`
   &:focus-within {
     border: 2px solid hsl(172, 67%, 45%);
   }
+
+  &:has(input:invalid)::after {
+    border: 2px solid red;
+  }
 `;
 
 const InputLabel = styled.label`
@@ -64,6 +68,22 @@ const HighlightableInputField = styled(InputField)`
   }
 `;
 
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const ErrorMessage = styled.span`
+  color: red;
+  font-size: 0.875rem;
+  visibility: hidden;
+  
+  & + input:invalid {
+    visibility: visible;
+  }
+`;
+
 export function CustomNumberInput ({ name, value, placeholder, min, onInput, required }) {
   return (<HighlightableInputField type="number" name={name} min={min} value={value} placeholder={placeholder} onKeyPress={(e) => handleKeypress(e)} onInput={onInput} required={required} />);
 }
@@ -71,7 +91,10 @@ export function CustomNumberInput ({ name, value, placeholder, min, onInput, req
 export function TwoColumnNumberInput ({ name, label, icon, alt, value, placeholder, min, onInput, required }) {
   return (
     <InputContainer>
-      <InputLabel htmlFor={name}>{ label }</InputLabel>
+      <Row>
+        <InputLabel htmlFor={name}>{ label }</InputLabel>
+        <ErrorMessage>Can't be zero</ErrorMessage>
+      </Row>
       <InnerContainer>
         {
           icon === 'person' ? <StyledPersonIcon /> : <StyledDollarIcon />

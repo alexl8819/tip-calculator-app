@@ -6,6 +6,8 @@ import { TwoColumnNumberInput } from './components/Input';
 
 import { calculateOwed } from './util';
 
+import Logo from './images/logo.svg';
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -117,8 +119,6 @@ export default function App () {
   const [tipPercentage, setTipPercentage] = useState(0);
   const [numOfPpl, setNumOfPpl] = useState('');
 
-  const logo = new URL('./images/logo.svg', import.meta.url);
-
   const calculateTipOwed = useMemo(() => calculateOwed({
     billAmount,
     tipPercentage,
@@ -170,7 +170,7 @@ export default function App () {
   return (
     <Container>
       <AppHeader>
-        <img src={logo} alt="app logo" />
+        <Logo />
       </AppHeader>
       <CalculatorForm name="billCalculator" onSubmit={(e) => e.preventDefault()}>
         <Col>

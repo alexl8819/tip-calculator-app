@@ -29,6 +29,11 @@ const TippingOptionLabel = styled.label`
     background-color: hsl(172, 67%, 45%);
     color: hsl(183, 100%, 15%);
   }
+
+  &:hover {
+    background-color: hsl(185, 41%, 84%);
+    color: hsl(183, 100%, 15%);
+  }
 `;
 
 const TippingOption = styled.input`
