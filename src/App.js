@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import TippingMenu from './components/Tip';
 import { TwoColumnNumberInput } from './components/Input';
 
-import { calculateOwed } from './util';
-
 import Logo from './images/logo.svg';
 
 const Container = styled.div`
@@ -137,7 +135,7 @@ export default function App () {
     setNumOfPpl('');
   };
 
-  const menu = {
+  const tipMenu = {
     tipAmounts: [
       {
         id: '63a1876a-f221-4d64-8acd-e13ba1b3db50',
@@ -174,11 +172,11 @@ export default function App () {
       </AppHeader>
       <CalculatorForm name="billCalculator" onSubmit={(e) => e.preventDefault()}>
         <Col>
-          <TwoColumnNumberInput icon="dollar" name="bill" label="Bill" alt="money icon" value={billAmount} placeholder="0" min="1" onInput={(e) => setBillAmount(e.target.value)} required />
+          <TwoColumnNumberInput icon="dollar" name="bill" label="Bill" placeholder="0" min="1" onInput={(e) => setBillAmount(e.target.value)} />
 
-          <TippingMenu menu={menu} allowCustomField={true} setTipPercentage={setTipPercentage} />
+          <TippingMenu menu={tipMenu} allowCustomField={true} setTipPercentage={setTipPercentage} />
           
-          <TwoColumnNumberInput icon="person" name="people" label="Number of People" alt="people icon" value={numOfPpl} placeholder="0" min="1" onInput={(e) => setNumOfPpl(e.target.value)} required />
+          <TwoColumnNumberInput icon="person" name="people" label="Number of People" placeholder="0" min="1" onInput={(e) => setNumOfPpl(e.target.value)} />
         </Col>
         <Col>
           <ResultPanel>
@@ -204,4 +202,17 @@ export default function App () {
       </CalculatorForm>
     </Container>
   );
+}
+
+function calculateOwed (env, owed) {
+  if (!env.billAmount || !env.tipPercentage || !env.numOfPpl) {
+    return '0.00';
+  }
+
+  const currentBillAmount = parseFloat(env.billAmount);
+  const selectedTipPercentage = parseInt(env.tipPercentage) / 100;
+  const people = parseInt(env.numOfPpl);
+  const newTipAmount = ((currentBillAmount * selectedTipPercentage) / people);
+    
+  return owed === 'tip' ? newTipAmount.toFixed(2) : ((currentBillAmount / people) + newTipAmount).toFixed(2);
 }
