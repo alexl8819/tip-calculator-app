@@ -45,6 +45,18 @@ const TippingOption = styled.input`
   display: none;
 `;
 
+const SrOnlyLabel = styled.label`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+`;
+
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -72,8 +84,8 @@ export default function TippingMenu ({ menu, setTipPercentage, allowCustomField 
         {
           allowCustomField ? (
             <>
-              <CustomNumberInput id="custom" placeholder="Custom" min="1" onInput={(e) => setTipPercentage(e.target.value)} />
-              <label htmlFor="custom"></label>
+              <CustomNumberInput id="custom" name="custom" placeholder="Custom" min="1" onInput={(e) => setTipPercentage(e.target.value)} />
+              <SrOnlyLabel htmlFor="custom">Custom</SrOnlyLabel>
             </>
           ) : ''
         }

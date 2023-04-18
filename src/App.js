@@ -189,7 +189,7 @@ export default function App () {
     <Container>
       <AppHeader>
         <Logo />
-        <MainHeading />
+        <MainHeading>Tip Splitter Calculator</MainHeading>
       </AppHeader>
       <CalculatorForm name="billCalculator" onSubmit={(e) => e.preventDefault()}>
         <Col>
