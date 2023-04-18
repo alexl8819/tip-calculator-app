@@ -1,15 +1,19 @@
-image: node
+image: node:lts
 
-before_script:
-  - npm install
-
-cache:
-  paths:
-    - node_modules/
+include:
+  - template: Jobs/SAST.gitlab-ci.yml
 
 pages:
   stage: deploy
+  cache:
+    key:
+      files:
+        - package-lock.json
+      prefix: npm
+    paths:
+      - node_modules/
   script:
+    - npm install
     - npm run build
   artifacts:
     paths:
