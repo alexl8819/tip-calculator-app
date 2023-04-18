@@ -21,7 +21,7 @@ const TippingOptionLabel = styled.label`
   display: block;
   width: 100%;
   padding: 7px;
-  font-size: 24px;
+  font-size: 18px;
   border-radius: 5px;
   text-align: center;
   color: hsl(0, 0%, 100%);
@@ -34,7 +34,7 @@ const TippingOptionLabel = styled.label`
   }
 
   &:hover {
-    background-color: hsl(185, 41%, 84%);
+    background-color: #9fe8e0;
     color: hsl(183, 100%, 15%);
   }
 `;

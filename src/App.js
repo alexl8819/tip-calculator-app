@@ -106,8 +106,13 @@ const ResetButton = styled.button`
   letter-spacing: 0.075em;
   text-transform: uppercase;
 
+  &:hover {
+    background-color: #9fe8df;
+  }
+
   &:disabled {
-    background-color: hsl(186, 14%, 43%);
+    background-color: #0d686d;
+    color: hsl(183, 100%, 15%);
     cursor: not-allowed;
   }
 `;
@@ -175,11 +180,11 @@ export default function App () {
       </AppHeader>
       <CalculatorForm name="billCalculator" onSubmit={(e) => e.preventDefault()}>
         <Col>
-          <TwoColumnNumberInput icon="dollar" name="bill" label="Bill" placeholder="0" min="1" onInput={(e) => setBillAmount(e.target.value)} />
+          <TwoColumnNumberInput icon="dollar" name="bill" label="Bill" placeholder="0" min="1" minHeight="50px" onInput={(e) => setBillAmount(e.target.value)} />
 
           <TippingMenu menu={tipMenu} allowCustomField={true} setTipPercentage={setTipPercentage} />
           
-          <TwoColumnNumberInput icon="person" name="people" label="Number of People" placeholder="0" min="1" onInput={(e) => setNumOfPpl(e.target.value)} />
+          <TwoColumnNumberInput icon="person" name="people" label="Number of People" placeholder="0" min="1" minHeight="50px" onInput={(e) => setNumOfPpl(e.target.value)} />
         </Col>
         <Col>
           <ResultPanel>
@@ -199,7 +204,7 @@ export default function App () {
                 <TotalAmount>${ calculateTotalOwed }</TotalAmount>
               </PanelContainer>
             </div>
-            <ResetButton type="reset" onClick={(e) => resetAll()} disabled={!billAmount || !tipPercentage || !numOfPpl}>Reset</ResetButton>
+            <ResetButton type="reset" onClick={(e) => resetAll()} disabled={!billAmount || billAmount <= 0 || !tipPercentage || tipPercentage <= 0 || !numOfPpl || numOfPpl <= 0}>Reset</ResetButton>
           </ResultPanel>
         </Col>
       </CalculatorForm>
@@ -208,7 +213,9 @@ export default function App () {
 }
 
 function calculateOwed (env, owed) {
-  if (!env.billAmount || !env.tipPercentage || !env.numOfPpl) {
+  if (!env.billAmount || env.billAmount <= 0 
+    || !env.tipPercentage || env.tipPercentage <= 0 
+    || !env.numOfPpl || env.numOfPpl <= 0) {
     return '0.00';
   }
 

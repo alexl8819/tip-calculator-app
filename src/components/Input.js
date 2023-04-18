@@ -40,10 +40,14 @@ const InputField = styled.input`
   border-radius: 8px;
   background-color: hsl(189, 41%, 97%);
   width: 100%;
-  height: 50px;
+  min-height: ${props => props.minHeight};
   padding-left: 15px;
   padding-right: 15px;
   appearance: textfield;
+
+  &::placeholder {
+    font-size: 18px;
+  }
 
   &:active, &:focus {
     outline: none;
@@ -60,14 +64,14 @@ const InputField = styled.input`
   }
 `;
 
-export function CustomNumberInput ({ name, placeholder, min, onInput }) {
-  return (<InputField type="number" name={name} min={min} placeholder={placeholder} step=".01" onKeyPress={(e) => handleKeypress(e)} onInput={onInput} />);
+export function CustomNumberInput ({ name, placeholder, min, onInput, minHeight }) {
+  return (<InputField type="number" name={name} min={min} placeholder={placeholder} step=".01" minHeight={minHeight} onKeyPress={(e) => handleKeypress(e)} onInput={onInput} />);
 }
 
-export function TwoColumnNumberInput ({ name, label, icon, placeholder, min, onInput }) {
+export function TwoColumnNumberInput ({ name, label, icon, placeholder, min, onInput, minHeight="32px" }) {
   return (
     <InputContainer icon={icon === 'person' ? PersonIcon : DollarIcon}>
-      <CustomNumberInput name={name} min={min} placeholder={placeholder} onKeyPress={(e) => handleKeypress(e)} onInput={onInput} />
+      <CustomNumberInput name={name} min={min} minHeight={minHeight} placeholder={placeholder} onKeyPress={(e) => handleKeypress(e)} onInput={onInput} />
       <InputLabel htmlFor={name}>{ label }</InputLabel>
     </InputContainer>
   )
