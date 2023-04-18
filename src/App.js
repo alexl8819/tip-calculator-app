@@ -16,6 +16,18 @@ const Container = styled.div`
   background-color: hsl(185, 41%, 84%);
 `;
 
+const MainHeading = styled.h1`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+`;
+
 const AppHeader = styled.header`
   margin-bottom: 4rem;
 `;
@@ -177,6 +189,7 @@ export default function App () {
     <Container>
       <AppHeader>
         <Logo />
+        <MainHeading />
       </AppHeader>
       <CalculatorForm name="billCalculator" onSubmit={(e) => e.preventDefault()}>
         <Col>

@@ -66,7 +66,7 @@ const InputField = styled.input`
 `;
 
 export function CustomNumberInput ({ name, placeholder, min, step, onInput, onKeyPress, minHeight = "32px" }) {
-  return (<InputField type="number" name={name} min={min} placeholder={placeholder} step={step} minHeight={minHeight} onKeyPress={onKeyPress} onInput={onInput} />);
+  return (<InputField type="number" id={name} name={name} min={min} placeholder={placeholder} step={step} minHeight={minHeight} onKeyPress={onKeyPress} onInput={onInput} />);
 }
 
 CustomNumberInput.propTypes = {

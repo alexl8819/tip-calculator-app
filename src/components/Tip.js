@@ -72,7 +72,7 @@ export default function TippingMenu ({ menu, setTipPercentage, allowCustomField 
         {
           allowCustomField ? (
             <>
-              <CustomNumberInput placeholder="Custom" min="1" onInput={(e) => setTipPercentage(e.target.value)} />
+              <CustomNumberInput id="custom" placeholder="Custom" min="1" onInput={(e) => setTipPercentage(e.target.value)} />
               <label htmlFor="custom"></label>
             </>
           ) : ''
