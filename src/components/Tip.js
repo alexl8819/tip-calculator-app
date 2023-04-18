@@ -69,7 +69,7 @@ const Grid = styled.div`
 
 export default function TippingMenu ({ menu, setTipPercentage, allowCustomField = true }) {
   return (
-    <TippingFieldset required>
+    <TippingFieldset>
       <TippingLegend>Select Tip %</TippingLegend>
             
       <Grid>
