@@ -14,7 +14,7 @@ const InputContainer = styled.div`
     width: 0.875rem;
     margin-top: -34px;
     padding-left: 20px;
-    z-index: 10
+    z-index: 10;
   }
 `;
 
