@@ -65,8 +65,8 @@ const InputField = styled.input`
   }
 `;
 
-export function CustomNumberInput ({ name, placeholder, min, step, onInput, minHeight = "32px" }) {
-  return (<InputField type="number" name={name} min={min} placeholder={placeholder} step={step} minHeight={minHeight} onKeyPress={(e) => handleKeypress(e)} onInput={onInput} />);
+export function CustomNumberInput ({ name, placeholder, min, step, onInput, onKeyPress, minHeight = "32px" }) {
+  return (<InputField type="number" name={name} min={min} placeholder={placeholder} step={step} minHeight={minHeight} onKeyPress={onKeyPress} onInput={onInput} />);
 }
 
 CustomNumberInput.propTypes = {
@@ -75,13 +75,14 @@ CustomNumberInput.propTypes = {
   min: PropTypes.string.isRequired,
   step: PropTypes.string.isRequired,
   onInput: PropTypes.func.isRequired,
+  onKeyPress: PropTypes.func.isRequired,
   minHeight: PropTypes.string
 };
 
 export function TwoColumnNumberInput ({ name, label, icon, placeholder, min, step, onInput, minHeight = "32px" }) {
   return (
     <InputContainer icon={icon === 'person' ? PersonIcon : DollarIcon}>
-      <CustomNumberInput name={name} min={min} step={step} minHeight={minHeight} placeholder={placeholder} onKeyPress={(e) => handleKeypress(e)} onInput={onInput} />
+      <CustomNumberInput name={name} min={min} step={step} minHeight={minHeight} placeholder={placeholder} onKeyPress={handleKeypress(step === '1')} onInput={onInput} />
       <InputLabel htmlFor={name}>{ label }</InputLabel>
     </InputContainer>
   )
@@ -98,10 +99,14 @@ TwoColumnNumberInput.propTypes = {
   minHeight: PropTypes.string
 };
 
-function handleKeypress (e) {
-  if (e.keyCode !== 37 && e.keyCode !== 39 && e.keyCode !== 8 && e.keyCode !== ' ' && e.code.includes('Key')) {
-    e.preventDefault();
-  } else if (e.target.value.length >= 8 && e.keyCode !== 37 && e.keyCode !== 39 && e.keyCode !== 8 && e.keyCode !== ' ') {
-    e.preventDefault();
+function handleKeypress (noDecimal = false) {
+  return (e) => {
+    if (e.keyCode !== 37 && e.keyCode !== 39 && e.keyCode !== 8 && e.keyCode !== ' ' && e.code.includes('Key')) {
+      e.preventDefault();
+    } else if (e.target.value.length >= 8 && e.keyCode !== 37 && e.keyCode !== 39 && e.keyCode !== 8 && e.keyCode !== ' ') {
+      e.preventDefault();
+    } else if (noDecimal && e.code === 'Period') {
+      e.preventDefault();
+    }
   }
 }
