@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import DollarIcon from '../images/icon-dollar.svg';
@@ -64,11 +65,19 @@ const InputField = styled.input`
   }
 `;
 
-export function CustomNumberInput ({ name, placeholder, min, onInput, minHeight }) {
+export function CustomNumberInput ({ name, placeholder, min, onInput, minHeight = "32px" }) {
   return (<InputField type="number" name={name} min={min} placeholder={placeholder} step=".01" minHeight={minHeight} onKeyPress={(e) => handleKeypress(e)} onInput={onInput} />);
 }
 
-export function TwoColumnNumberInput ({ name, label, icon, placeholder, min, onInput, minHeight="32px" }) {
+CustomNumberInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  min: PropTypes.string.isRequired,
+  onInput: PropTypes.func.isRequired,
+  minHeight: PropTypes.string
+};
+
+export function TwoColumnNumberInput ({ name, label, icon, placeholder, min, onInput, minHeight = "32px" }) {
   return (
     <InputContainer icon={icon === 'person' ? PersonIcon : DollarIcon}>
       <CustomNumberInput name={name} min={min} minHeight={minHeight} placeholder={placeholder} onKeyPress={(e) => handleKeypress(e)} onInput={onInput} />
@@ -76,6 +85,16 @@ export function TwoColumnNumberInput ({ name, label, icon, placeholder, min, onI
     </InputContainer>
   )
 }
+
+TwoColumnNumberInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  icon: PropTypes.string,
+  placeholder: PropTypes.string.isRequired,
+  min: PropTypes.string.isRequired,
+  onInput: PropTypes.func.isRequired,
+  minHeight: PropTypes.string
+};
 
 function handleKeypress (e) {
   if (e.keyCode !== 37 && e.keyCode !== 39 && e.keyCode !== 8 && e.keyCode !== ' ' && e.code.includes('Key')) {

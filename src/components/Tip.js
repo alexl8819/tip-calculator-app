@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { CustomNumberInput } from './Input';
@@ -54,16 +55,16 @@ const Grid = styled.div`
   }
 `;
 
-export default function TippingMenu ({ menu, allowCustomField, setTipPercentage }) {
+export default function TippingMenu ({ menu, setTipPercentage, allowCustomField = true }) {
   return (
     <TippingFieldset required>
       <TippingLegend>Select Tip %</TippingLegend>
             
       <Grid>
         {
-          menu.tipAmounts.map(({ id, amount, value }, index) => (
+          menu.tipAmounts.map(({ id, amount, value }) => (
             <div key={id}>
-              <TippingOption type="radio" id={value} name="tip" value={amount} onChange={(e) => setTipPercentage(amount)} />
+              <TippingOption type="radio" id={value} name="tip" value={amount} onChange={() => setTipPercentage(amount)} />
               <TippingOptionLabel htmlFor={value}>{amount}%</TippingOptionLabel>
             </div>
           ))
@@ -79,4 +80,10 @@ export default function TippingMenu ({ menu, allowCustomField, setTipPercentage 
       </Grid>
     </TippingFieldset>
   );
+}
+
+TippingMenu.propTypes = {
+  menu: PropTypes.array.isRequired,
+  setTipPercentage: PropTypes.func.isRequired,
+  allowCustomField: PropTypes.boolean
 }

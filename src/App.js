@@ -204,7 +204,7 @@ export default function App () {
                 <TotalAmount>${ calculateTotalOwed }</TotalAmount>
               </PanelContainer>
             </div>
-            <ResetButton type="reset" onClick={(e) => resetAll()} disabled={!billAmount || billAmount <= 0 || !tipPercentage || tipPercentage <= 0 || !numOfPpl || numOfPpl <= 0}>Reset</ResetButton>
+            <ResetButton type="reset" onClick={() => resetAll()} disabled={!billAmount || billAmount <= 0 || !tipPercentage || tipPercentage <= 0 || !numOfPpl || numOfPpl <= 0}>Reset</ResetButton>
           </ResultPanel>
         </Col>
       </CalculatorForm>
