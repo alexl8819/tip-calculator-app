@@ -5,21 +5,32 @@ import PersonIcon from '../images/icon-person.svg';
 
 const InputContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   margin-top: 10px;
   margin-bottom: 10px;
 
-  &::after {
+  &::before {
     content: url(${props => props.icon});
     width: 0.875rem;
     margin-top: -34px;
     padding-left: 20px;
+    z-index: 10
   }
 `;
 
 const InputLabel = styled.label`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   color: hsl(183, 100%, 15%);
   margin-bottom: 5px;
+
+  input:invalid + &::after {
+    color: red;
+    font-size: 0.875rem;
+    content: "Can't be zero";
+    text-align: right;
+  }
 `;
 
 const InputField = styled.input`
@@ -49,22 +60,6 @@ const InputField = styled.input`
   }
 `;
 
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const ErrorMessage = styled.span`
-  color: red;
-  font-size: 0.875rem;
-  visibility: hidden;
-  
-  & + input:invalid {
-    visibility: visible;
-  }
-`;
-
 export function CustomNumberInput ({ name, placeholder, min, onInput }) {
   return (<InputField type="number" name={name} min={min} placeholder={placeholder} onKeyPress={(e) => handleKeypress(e)} onInput={onInput} />);
 }
@@ -72,11 +67,8 @@ export function CustomNumberInput ({ name, placeholder, min, onInput }) {
 export function TwoColumnNumberInput ({ name, label, icon, placeholder, min, onInput }) {
   return (
     <InputContainer icon={icon === 'person' ? PersonIcon : DollarIcon}>
-      <Row>
-        <InputLabel htmlFor={name}>{ label }</InputLabel>
-        <ErrorMessage>Can't be zero</ErrorMessage>
-      </Row>
       <CustomNumberInput name={name} min={min} placeholder={placeholder} onKeyPress={(e) => handleKeypress(e)} onInput={onInput} />
+      <InputLabel htmlFor={name}>{ label }</InputLabel>
     </InputContainer>
   )
 }
