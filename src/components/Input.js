@@ -6,8 +6,8 @@ import PersonIcon from '../images/icon-person.svg';
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
   &::before {
     content: url(${props => props.icon});
@@ -61,7 +61,7 @@ const InputField = styled.input`
 `;
 
 export function CustomNumberInput ({ name, placeholder, min, onInput }) {
-  return (<InputField type="number" name={name} min={min} placeholder={placeholder} onKeyPress={(e) => handleKeypress(e)} onInput={onInput} />);
+  return (<InputField type="number" name={name} min={min} placeholder={placeholder} step=".01" onKeyPress={(e) => handleKeypress(e)} onInput={onInput} />);
 }
 
 export function TwoColumnNumberInput ({ name, label, icon, placeholder, min, onInput }) {

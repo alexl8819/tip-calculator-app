@@ -24,10 +24,10 @@ const CalculatorForm = styled.form`
   display: flex;
   flex-direction: column;
   font-family: 'Space Mono', sans-serif;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 35px;
-  padding-right: 35px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 30px;
+  padding-right: 30px;
   border-radius: 12px;
   background-color: hsl(0, 0%, 100%);
 
@@ -90,7 +90,7 @@ const PerPersonDescription = styled.p`
 
 const Result = styled.span`
   color: hsl(172, 67%, 45%);
-  font-size: 1.5rem;
+  font-size: 2rem;
 
   @media screen and (min-width: 1024px) {
     font-size: 2.5rem;
@@ -100,12 +100,15 @@ const Result = styled.span`
 const ResetButton = styled.button`
   background-color: hsl(172, 67%, 45%);
   border: none;
+  border-radius: 8px;
+  cursor: pointer;
   padding: 10px;
-  letter-spacing: 0.085em;
+  letter-spacing: 0.075em;
   text-transform: uppercase;
 
   &:disabled {
     background-color: hsl(186, 14%, 43%);
+    cursor: not-allowed;
   }
 `;
 

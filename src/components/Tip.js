@@ -8,6 +8,8 @@ const TippingFieldset = styled.fieldset`
   border: none;
   padding: 0;
   margin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 
 const TippingLegend = styled.legend`
@@ -18,8 +20,9 @@ const TippingLegend = styled.legend`
 const TippingOptionLabel = styled.label`
   display: block;
   width: 100%;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 7px;
+  font-size: 24px;
+  border-radius: 5px;
   text-align: center;
   color: hsl(0, 0%, 100%);
   background-color: hsl(183, 100%, 15%);
@@ -44,7 +47,7 @@ const TippingOption = styled.input`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 15px;
 
   @media screen and (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
@@ -68,7 +71,7 @@ export default function TippingMenu ({ menu, allowCustomField, setTipPercentage 
         {
           allowCustomField ? (
             <>
-              <CustomNumberInput placeholder="custom" min="1" onInput={(e) => setTipPercentage(e.target.value)} />
+              <CustomNumberInput placeholder="Custom" min="1" onInput={(e) => setTipPercentage(e.target.value)} />
               <label htmlFor="custom"></label>
             </>
           ) : ''
