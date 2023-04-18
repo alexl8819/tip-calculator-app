@@ -97,7 +97,7 @@ const TitleDescription = styled.p`
 
 const PerPersonDescription = styled.p`
   color: hsl(184, 14%, 56%);
-  font-size: 0.675rem;
+  font-size: 0.6875rem;
 `;
 
 const Result = styled.span`
