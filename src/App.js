@@ -180,11 +180,11 @@ export default function App () {
       </AppHeader>
       <CalculatorForm name="billCalculator" onSubmit={(e) => e.preventDefault()}>
         <Col>
-          <TwoColumnNumberInput icon="dollar" name="bill" label="Bill" placeholder="0" min="1" minHeight="50px" onInput={(e) => setBillAmount(e.target.value)} />
+          <TwoColumnNumberInput icon="dollar" name="bill" label="Bill" placeholder="0" min="1" step=".01" minHeight="50px" onInput={(e) => setBillAmount(e.target.value)} />
 
           <TippingMenu menu={tipMenu} allowCustomField={true} setTipPercentage={setTipPercentage} />
           
-          <TwoColumnNumberInput icon="person" name="people" label="Number of People" placeholder="0" min="1" minHeight="50px" onInput={(e) => setNumOfPpl(e.target.value)} />
+          <TwoColumnNumberInput icon="person" name="people" label="Number of People" placeholder="0" min="1" step="1" minHeight="50px" onInput={(e) => setNumOfPpl(e.target.value)} />
         </Col>
         <Col>
           <ResultPanel>
