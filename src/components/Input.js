@@ -23,7 +23,7 @@ const InputLabel = styled.label`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: hsl(183, 100%, 15%);
+  color: hsl(184, 14%, 56%);
   margin-bottom: 5px;
 
   input:invalid + &::after {

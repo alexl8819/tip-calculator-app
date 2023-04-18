@@ -14,7 +14,7 @@ const TippingFieldset = styled.fieldset`
 `;
 
 const TippingLegend = styled.legend`
-  color: hsl(183, 100%, 15%);
+  color: hsl(184, 14%, 56%);
   margin-bottom: 10px;  
 `;
 
