@@ -38,6 +38,8 @@ const PerPersonDescription = styled.p`
 const Result = styled.span`
   color: hsl(172, 67%, 45%);
   font-size: 2rem;
+  max-width: 11rem;
+  overflow-x: auto;
 
   @media screen and (min-width: 1024px) {
     font-size: 2.5rem;
