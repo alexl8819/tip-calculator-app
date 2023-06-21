@@ -35,13 +35,13 @@ const InputLabel = styled.label`
 `;
 
 const InputField = styled.input`
-  font-size: 24px;
+  font-size: 20px;
   text-align: right;
   border: none;
   border-radius: 8px;
   background-color: hsl(189, 41%, 97%);
-  width: 100%;
   min-height: ${props => props.minHeight};
+  width: 100%;
   padding-left: 15px;
   padding-right: 15px;
   appearance: textfield;

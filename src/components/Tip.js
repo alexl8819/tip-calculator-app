@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -68,15 +69,22 @@ const Grid = styled.div`
 `;
 
 export default function TippingMenu ({ menu, setTipPercentage, allowCustomField = true }) {
+  const [selected, setSelected] = useState('');
+
+  function updateAndSet (id, amount) {
+    setSelected(id);
+    setTipPercentage(amount);
+  }
+
   return (
     <TippingFieldset>
       <TippingLegend>Select Tip %</TippingLegend>
             
       <Grid>
         {
-          menu.tipAmounts.map(({ id, amount, value }) => (
+          menu.map(({ id, amount, value }) => (
             <div key={id}>
-              <TippingOption type="radio" id={value} name="tip" value={amount} onChange={() => setTipPercentage(amount)} />
+              <TippingOption type="radio" id={value} name="tip" value={amount} onChange={() => updateAndSet(id, amount)} checked={id === selected} />
               <TippingOptionLabel htmlFor={value}>{amount}%</TippingOptionLabel>
             </div>
           ))
@@ -84,7 +92,7 @@ export default function TippingMenu ({ menu, setTipPercentage, allowCustomField 
         {
           allowCustomField ? (
             <>
-              <CustomNumberInput id="custom" name="custom" placeholder="Custom" min="1" onInput={(e) => setTipPercentage(e.target.value)} />
+              <CustomNumberInput id="custom" name="custom" placeholder="Custom" min="1" step="1" onFocus={(e) => console.log('focused')} onInput={(e) => updateAndSet('custom', e.target.value)} />
               <SrOnlyLabel htmlFor="custom">Custom</SrOnlyLabel>
             </>
           ) : ''
@@ -97,5 +105,5 @@ export default function TippingMenu ({ menu, setTipPercentage, allowCustomField 
 TippingMenu.propTypes = {
   menu: PropTypes.array.isRequired,
   setTipPercentage: PropTypes.func.isRequired,
-  allowCustomField: PropTypes.boolean
+  allowCustomField: PropTypes.bool
 }
