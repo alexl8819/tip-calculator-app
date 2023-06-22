@@ -75,7 +75,7 @@ CustomNumberInput.propTypes = {
   min: PropTypes.string.isRequired,
   step: PropTypes.string.isRequired,
   onInput: PropTypes.func.isRequired,
-  onKeyPress: PropTypes.func.isRequired,
+  onKeyPress: PropTypes.func,
   minHeight: PropTypes.string
 };
 
