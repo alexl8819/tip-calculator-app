@@ -40,6 +40,7 @@ const Result = styled.span`
   font-size: 2rem;
   max-width: 11rem;
   overflow-x: auto;
+  overflow-y: hidden;
 
   @media screen and (min-width: 1024px) {
     font-size: 2.5rem;
@@ -94,8 +95,8 @@ export default function ResultDisplay ({ calculateTipOwed, calculateTotalOwed, i
 }
 
 ResultDisplay.propTypes = {
-  calculateTipOwed: PropTypes.func.isRequired,
-  calculateTotalOwed: PropTypes.func.isRequired,
+  calculateTipOwed: PropTypes.string.isRequired,
+  calculateTotalOwed: PropTypes.string.isRequired,
   isDisabled: PropTypes.bool.isRequired,
   resetAll: PropTypes.func.isRequired
 };
