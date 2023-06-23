@@ -30,24 +30,24 @@ const MainHeading = styled.h1`
 `;
 
 const AppHeader = styled.header`
-  margin-bottom: 4rem;
+  margin-bottom: 5.5rem;
 `;
 
 const CalculatorForm = styled.form`
   display: flex;
   flex-direction: column;
   font-family: 'Space Mono', sans-serif;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  padding-left: 30px;
-  padding-right: 30px;
-  border-radius: 12px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 45px;
+  padding-right: 45px;
+  border-radius: 18px;
   background-color: hsl(0, 0%, 100%);
 
   @media screen and (min-width: 1024px) {
     flex-direction: row;
     justify-content: space-between;
-    max-width: 48rem;
+    max-width: 57.5rem;
   }
 `;
 
@@ -58,11 +58,11 @@ const Col = styled.div`
     width: 50%;
     
     &:first-child {
-      margin-right: 20px;
+      margin-right: 23px;
     }
 
     &:last-child {
-      margin-left: 20px;
+      margin-left: 23px;
     }
   }
 `;
@@ -126,11 +126,11 @@ export default function App () {
       </AppHeader>
       <CalculatorForm name="billCalculator" onSubmit={(e) => e.preventDefault()}>
         <Col>
-          <TwoColumnNumberInput icon="dollar" name="bill" label="Bill" placeholder="0" min="1" step=".01" minHeight="50px" onInput={(e) => setBillAmount(e.target.value)} />
+          <TwoColumnNumberInput icon="dollar" name="bill" label="Bill" placeholder="0" min="1" step=".01" minHeight="52px" onInput={(e) => setBillAmount(e.target.value)} />
 
           <TippingMenu menu={tipMenu} allowCustomField={true} setTipPercentage={setTipPercentage} />
           
-          <TwoColumnNumberInput icon="person" name="people" label="Number of People" placeholder="0" min="1" step="1" minHeight="50px" onInput={(e) => setNumOfPpl(e.target.value)} />
+          <TwoColumnNumberInput icon="person" name="people" label="Number of People" placeholder="0" min="1" step="1" minHeight="52px" onInput={(e) => setNumOfPpl(e.target.value)} />
         </Col>
         <Col>
           <ResultDisplay calculateTipOwed={calculateTipOwed} calculateTotalOwed={calculateTotalOwed} isDisabled={!billAmount || billAmount <= 0 || !tipPercentage || tipPercentage <= 0 || !numOfPpl || numOfPpl <= 0} resetAll={() => resetAll()} />

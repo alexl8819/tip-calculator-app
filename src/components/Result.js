@@ -6,13 +6,13 @@ const ResultPanel = styled.div`
   flex-direction: column;
   justify-content: space-between;
   background-color: hsl(183, 100%, 15%);
-  border-radius: 8px;
+  border-radius: 15px;
   margin-top: 10px;
-  padding: 25px;
+  padding: 32px;
   height: 100%;
 
   @media screen and (min-width: 1024px) {
-    margin-top: 0;
+    margin-top: 8px;
     min-width: 20rem;
   }
 `;
@@ -22,7 +22,7 @@ const PanelContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 `;
 
 const TitleDescription = styled.p`
@@ -43,7 +43,7 @@ const Result = styled.span`
   overflow-y: hidden;
 
   @media screen and (min-width: 1024px) {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 `;
 
@@ -52,7 +52,7 @@ const ResetButton = styled.button`
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  padding: 10px;
+  padding: 20px 15px;
   letter-spacing: 0.075em;
   text-transform: uppercase;
 

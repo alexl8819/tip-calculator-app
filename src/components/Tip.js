@@ -10,20 +10,20 @@ const TippingFieldset = styled.fieldset`
   border: none;
   padding: 0;
   margin: 0;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 `;
 
 const TippingLegend = styled.legend`
   color: hsl(184, 14%, 56%);
-  margin-bottom: 10px;  
+  margin-bottom: 20px;  
 `;
 
 const TippingOptionLabel = styled.label`
   display: block;
   width: 100%;
-  padding: 7px;
-  font-size: 18px;
+  padding: 10px 15px;
+  font-size: 22px;
   border-radius: 5px;
   text-align: center;
   color: hsl(0, 0%, 100%);
@@ -61,7 +61,7 @@ const SrOnlyLabel = styled.label`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  gap: 23px;
 
   @media screen and (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);

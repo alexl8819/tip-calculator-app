@@ -35,7 +35,7 @@ const InputLabel = styled.label`
 `;
 
 const InputField = styled.input`
-  font-size: 20px;
+  font-size: 24px;
   text-align: right;
   border: none;
   border-radius: 8px;
@@ -43,11 +43,12 @@ const InputField = styled.input`
   min-height: ${props => props.minHeight};
   width: 100%;
   padding-left: 15px;
-  padding-right: 15px;
+  padding-right: 30px;
   appearance: textfield;
 
   &::placeholder {
-    font-size: 18px;
+    font-size: 24px;
+    color: hsl(186, 14%, 43%);
   }
 
   &:active, &:focus {
