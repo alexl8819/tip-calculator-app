@@ -37,8 +37,8 @@ const CalculatorForm = styled.form`
   display: flex;
   flex-direction: column;
   font-family: 'Space Mono', sans-serif;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 35px;
+  padding-bottom: 35px;
   padding-left: 45px;
   padding-right: 45px;
   border-radius: 18px;
@@ -117,20 +117,20 @@ export default function App () {
     setTipPercentage(5);
     setNumOfPpl('');
   };
-
+  
   return (
     <Container>
       <AppHeader>
-        <Logo />
+        <img src={Logo} alt="app logo" />
         <MainHeading>Tip Splitter Calculator</MainHeading>
       </AppHeader>
       <CalculatorForm name="billCalculator" onSubmit={(e) => e.preventDefault()}>
         <Col>
-          <TwoColumnNumberInput icon="dollar" name="bill" label="Bill" placeholder="0" min="1" step=".01" minHeight="52px" onInput={(e) => setBillAmount(e.target.value)} />
+          <TwoColumnNumberInput icon="dollar" name="bill" label="Bill" placeholder="0" min="1" step=".01" minHeight="52px" onChange={(e) => setBillAmount(e.target.value)} />
 
           <TippingMenu menu={tipMenu} allowCustomField={true} setTipPercentage={setTipPercentage} />
           
-          <TwoColumnNumberInput icon="person" name="people" label="Number of People" placeholder="0" min="1" step="1" minHeight="52px" onInput={(e) => setNumOfPpl(e.target.value)} />
+          <TwoColumnNumberInput icon="person" name="people" label="Number of People" placeholder="0" min="1" step="1" minHeight="52px" onChange={(e) => setNumOfPpl(e.target.value)} />
         </Col>
         <Col>
           <ResultDisplay calculateTipOwed={calculateTipOwed} calculateTotalOwed={calculateTotalOwed} isDisabled={!billAmount || billAmount <= 0 || !tipPercentage || tipPercentage <= 0 || !numOfPpl || numOfPpl <= 0} resetAll={() => resetAll()} />

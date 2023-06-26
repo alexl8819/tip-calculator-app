@@ -66,8 +66,8 @@ const InputField = styled.input`
   }
 `;
 
-export function CustomNumberInput ({ name, placeholder, min, step, onInput, onKeyPress, minHeight = "32px" }) {
-  return (<InputField type="number" id={name} name={name} min={min} placeholder={placeholder} step={step} minHeight={minHeight} onKeyPress={onKeyPress} onInput={onInput} />);
+export function CustomNumberInput ({ name, placeholder, min, step, onChange, onKeyPress, minHeight = "32px" }) {
+  return (<InputField type="number" id={name} name={name} min={min} placeholder={placeholder} step={step} minHeight={minHeight} onKeyPress={onKeyPress} onChange={onChange} />);
 }
 
 CustomNumberInput.propTypes = {
@@ -75,15 +75,15 @@ CustomNumberInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
   min: PropTypes.string.isRequired,
   step: PropTypes.string.isRequired,
-  onInput: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   onKeyPress: PropTypes.func,
   minHeight: PropTypes.string
 };
 
-export function TwoColumnNumberInput ({ name, label, icon, placeholder, min, step, onInput, minHeight = "32px" }) {
+export function TwoColumnNumberInput ({ name, label, icon, placeholder, min, step, onChange, minHeight = "32px" }) {
   return (
     <InputContainer icon={icon === 'person' ? PersonIcon : DollarIcon}>
-      <CustomNumberInput name={name} min={min} step={step} minHeight={minHeight} placeholder={placeholder} onKeyPress={handleKeypress(step === '1')} onInput={onInput} />
+      <CustomNumberInput name={name} min={min} step={step} minHeight={minHeight} placeholder={placeholder} onKeyPress={handleKeypress(step === '1')} onChange={onChange} />
       <InputLabel htmlFor={name}>{ label }</InputLabel>
     </InputContainer>
   )
@@ -96,7 +96,7 @@ TwoColumnNumberInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
   min: PropTypes.string.isRequired,
   step: PropTypes.string.isRequired,
-  onInput: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   minHeight: PropTypes.string
 };
 
