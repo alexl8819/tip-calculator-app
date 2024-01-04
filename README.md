@@ -25,11 +25,12 @@ Users should be able to:
 
 ### Screenshot
 
-![Screenshot](./screenshot.png)
+![Mobile Screenshot](./screenshots/mobile.png)
+![Desktop Screenshot](./screenshots/desktop.png)
 
 ### Links
 
-- Live Site URL: [Tip Calculator App](https://slightlyfunctional.gitlab.io/tip-calculator-app)
+- Live Site URL: [Tip Calculator App](https://alexl8819.github.io/tip-calculator-app)
 
 ## My process
 
@@ -51,5 +52,4 @@ of using jest on the next react project.
 
 ## Author
 
-- Website - [slightlyfunctional.com](https://slightlyfunctional.com)
-- Frontend Mentor - [@slightlyfunctional](https://www.frontendmentor.io/profile/slightlyfunctional)
+- Frontend Mentor - [@alexl8819](https://www.frontendmentor.io/profile/alexl8819)
