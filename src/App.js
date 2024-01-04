@@ -30,7 +30,12 @@ const MainHeading = styled.h1`
 `;
 
 const AppHeader = styled.header`
+  margin-top: 1.5rem;
   margin-bottom: 5.5rem;
+
+  @media screen and (min-width: 1024px) {
+    margin-top: 0;
+  }
 `;
 
 const CalculatorForm = styled.form`

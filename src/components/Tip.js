@@ -92,7 +92,7 @@ export default function TippingMenu ({ menu, setTipPercentage, allowCustomField 
         {
           allowCustomField ? (
             <>
-              <CustomNumberInput id="custom" name="custom" placeholder="Custom" min="1" step="1" onFocus={(e) => console.log('focused')} onChange={(e) => updateAndSet('custom', e.target.value)} />
+              <CustomNumberInput id="custom" name="custom" placeholder="Custom" min="1" step="1" onChange={(e) => updateAndSet('custom', e.target.value)} />
               <SrOnlyLabel htmlFor="custom">Custom</SrOnlyLabel>
             </>
           ) : ''
