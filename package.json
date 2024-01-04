@@ -10,7 +10,7 @@
     "lint": "npx eslint ./src --max-warnings=0",
     "test": "jest --no-cache"
   },
-  "author": "slightlyfunctional",
+  "author": "alexl8819",
   "license": "GPL-3.0-or-later",
   "devDependencies": {
     "@babel/core": "^7.22.5",
@@ -22,6 +22,7 @@
     "@testing-library/react": "^14.0.0",
     "buffer": "^5.7.1",
     "eslint": "^8.38.0",
+    "eslint-plugin-jest": "^27.6.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-testing-library": "^5.11.0",
     "events": "^3.3.0",
